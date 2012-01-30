@@ -1,9 +1,14 @@
+# TODO: Update when python-WebOb 1.2 is released
+# TODO: Add tests
+# Conditional build:
+%bcond_with	tests	# do not perform "make test"
+
 %define 	module	WsgiService
 Summary:	WSGI framework for easy creation of REST services
 Summary(pl.UTF-8):	Narzędzie do łatwego tworzenia usług REST.
 Name:		python-%{module}
 Version:	0.3
-Release:	1
+Release:	1.1
 License:	BSD
 Group:		Development/Languages/Python
 # http://pypi.python.org/packages/source/W/WsgiService/WsgiService-0.3.zip#md5=f689f60aa16cb84aeccb72f621ed3156
@@ -12,6 +17,13 @@ Source0:	http://pypi.python.org/packages/source/W/%{module}/%{module}-%{version}
 URL:		http://pypi.python.org/pypi/WsgiService
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.219
+# Sphinx-PyPI-upload not really needed byt mentioned as needed in setup.py
+# BuildRequires:	python-Sphinx-PyPI-upload  
+# Add it when python-WebOb will be relased with stable 1.2
+# BuildRequires:	python-WebOb >= 1.2b2
+# Test requirements
+%{?with_tests:BuildRequires:	python-nose }
+%{?with_tests:BuildRequires:	python-mox }
 Requires:	python-decorator
 Requires:	python-modules
 BuildArch:	noarch
@@ -50,6 +62,7 @@ zapisania. WsgiService dostarcza programiście:
 
 %build
 %{__python} setup.py build
+%{?with_tests:%{__python} setup.py test}
 
 %install
 rm -rf $RPM_BUILD_ROOT
