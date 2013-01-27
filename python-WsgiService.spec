@@ -1,29 +1,25 @@
-# TODO: Update when python-WebOb 1.2 is released
-# TODO: Add tests
+#
 # Conditional build:
-%bcond_with	tests	# do not perform "make test"
+%bcond_without	tests	# do not perform "make test"
 
 %define 	module	WsgiService
 Summary:	WSGI framework for easy creation of REST services
 Summary(pl.UTF-8):	Narzędzie do łatwego tworzenia usług REST.
 Name:		python-%{module}
-Version:	0.3
-Release:	1.1
+Version:	0.3.1
+Release:	1
 License:	BSD
 Group:		Development/Languages/Python
 # http://pypi.python.org/packages/source/W/WsgiService/WsgiService-0.3.zip#md5=f689f60aa16cb84aeccb72f621ed3156
 Source0:	http://pypi.python.org/packages/source/W/%{module}/%{module}-%{version}.zip
-# Source0-md5:	f689f60aa16cb84aeccb72f621ed3156
+# Source0-md5:	5db2ddc35b67076e13c90597e5c09736
 URL:		http://pypi.python.org/pypi/WsgiService
+%{?with_tests:BuildRequires:	python-WebOb >= 1.2}
+%{?with_tests:BuildRequires:	python-decorator}
+%{?with_tests:BuildRequires:	python-nose}
+%{?with_tests:BuildRequires:	python-pymox}
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.219
-# Sphinx-PyPI-upload not really needed byt mentioned as needed in setup.py
-# BuildRequires:	python-Sphinx-PyPI-upload  
-# Add it when python-WebOb will be relased with stable 1.2
-# BuildRequires:	python-WebOb >= 1.2b2
-# Test requirements
-%{?with_tests:BuildRequires:	python-nose }
-%{?with_tests:BuildRequires:	python-mox }
 Requires:	python-decorator
 Requires:	python-modules
 BuildArch:	noarch
@@ -56,7 +52,6 @@ zapisania. WsgiService dostarcza programiście:
   być pełnym frontendem usług REST. Należy używać istniejących do wyboru
   np Pylons.
 
-
 %prep
 %setup -q -n %{module}-%{version}
 
@@ -81,12 +76,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-# %doc AUTHORS CREDITS ChangeLog NEWS README THANKS TODO
-# change %{py_sitedir} to %{py_sitescriptdir} for 'noarch' packages!
-# %{py_sitedir}/*.py[co]
-%{py_sitescriptdir}/wsgiservice
-# %attr(755,root,root) %{py_sitedir}/*.so
+%dir %{py_sitescriptdir}/wsgiservice
+%{py_sitescriptdir}/wsgiservice/*.py[co]
 %if "%{py_ver}" > "2.4"
 %{py_sitescriptdir}/WsgiService-*.egg-info
 %endif
-# %{_examplesdir}/%{name}-%{version}
