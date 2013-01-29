@@ -1,3 +1,5 @@
+# TODO
+# - rename to python-wscgiservice to conform pld py package naming
 #
 # Conditional build:
 %bcond_without	tests	# do not perform "make test"
@@ -7,10 +9,9 @@ Summary:	WSGI framework for easy creation of REST services
 Summary(pl.UTF-8):	Narzędzie do łatwego tworzenia usług REST.
 Name:		python-%{module}
 Version:	0.3.1
-Release:	1
+Release:	2
 License:	BSD
 Group:		Development/Languages/Python
-# http://pypi.python.org/packages/source/W/WsgiService/WsgiService-0.3.zip#md5=f689f60aa16cb84aeccb72f621ed3156
 Source0:	http://pypi.python.org/packages/source/W/%{module}/%{module}-%{version}.zip
 # Source0-md5:	5db2ddc35b67076e13c90597e5c09736
 URL:		http://pypi.python.org/pypi/WsgiService
