@@ -20,7 +20,7 @@ URL:		http://pypi.python.org/pypi/WsgiService
 %{?with_tests:BuildRequires:	python-nose}
 %{?with_tests:BuildRequires:	python-pymox}
 BuildRequires:	rpm-pythonprov
-BuildRequires:	rpmbuild(macros) >= 1.219
+BuildRequires:	rpmbuild(macros) >= 1.710
 Requires:	python-decorator
 Requires:	python-modules
 BuildArch:	noarch
