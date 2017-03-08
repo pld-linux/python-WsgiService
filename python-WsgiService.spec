@@ -4,12 +4,12 @@
 # Conditional build:
 %bcond_without	tests	# do not perform "make test"
 
-%define 	module	WsgiService
+%define		module	WsgiService
 Summary:	WSGI framework for easy creation of REST services
 Summary(pl.UTF-8):	Narzędzie do łatwego tworzenia usług REST.
 Name:		python-%{module}
 Version:	0.3.1
-Release:	3
+Release:	4
 License:	BSD
 Group:		Development/Languages/Python
 Source0:	http://pypi.python.org/packages/source/W/%{module}/%{module}-%{version}.zip
@@ -18,7 +18,7 @@ URL:		http://pypi.python.org/pypi/WsgiService
 %{?with_tests:BuildRequires:	python-WebOb >= 1.2}
 %{?with_tests:BuildRequires:	python-decorator}
 %{?with_tests:BuildRequires:	python-nose}
-%{?with_tests:BuildRequires:	python-pymox}
+%{?with_tests:BuildRequires:	python-mox}
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.710
 Requires:	python-decorator
