@@ -9,7 +9,7 @@ Summary:	WSGI framework for easy creation of REST services
 Summary(pl.UTF-8):	Narzędzie do łatwego tworzenia usług REST.
 Name:		python-%{module}
 Version:	0.3.1
-Release:	4
+Release:	5
 License:	BSD
 Group:		Development/Languages/Python
 Source0:	http://pypi.python.org/packages/source/W/%{module}/%{module}-%{version}.zip
